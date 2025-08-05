@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalManagmentSystem_LevelArchitecture.Repositories
 {
-    public class DoctorRepository
+    public class DoctorRepository : IDoctorRepository
     {
         // get the database context
         private readonly DoctorDbContext _context;
@@ -18,12 +18,10 @@ namespace HospitalManagmentSystem_LevelArchitecture.Repositories
             _context = context;
         }
 
+        // CRUD operations for Doctor entity
         public void AddDoctor(Doctor doctor)
         {
-            if (doctor == null)
-            {
-                throw new ArgumentNullException(nameof(doctor), "Doctor cannot be null");
-            }
+
             _context.Doctors.Add(doctor);
             _context.SaveChanges();
         }
@@ -36,25 +34,23 @@ namespace HospitalManagmentSystem_LevelArchitecture.Repositories
 
         public Doctor GetDoctorById(int id)
         {
-            return _context.Doctors.FirstOrDefault(d => d.Id == id);
+            return _context.Doctors.Find(id);
         }
 
         public void UpdateDoctor(Doctor doctor)
         {
-            if (doctor == null)
-            {
-                throw new ArgumentNullException(nameof(doctor), "Doctor cannot be null");
-            }
-            var existingDoctor = _context.Doctors.FirstOrDefault(d => d.Id == doctor.Id);
-            if (existingDoctor == null)
-            {
-                throw new KeyNotFoundException($"Doctor with ID {doctor.Id} not found");
-            }
-            existingDoctor.Name = doctor.Name;
-            existingDoctor.Specialization = doctor.Specialization;
-            existingDoctor.ContactNumber = doctor.ContactNumber;
+            _context.Doctors.Update(doctor);
             _context.SaveChanges();
         }
 
+        public void DeleteDoctor(int id)
+        {
+            var doctor = _context.Doctors.Find(id);
+            if (doctor != null)
+            {
+                _context.Doctors.Remove(doctor);
+                _context.SaveChanges();
+            }
+        }
     }
 }
