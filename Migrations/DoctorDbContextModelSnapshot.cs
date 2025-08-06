@@ -43,7 +43,7 @@ namespace HospitalManagmentSystem_LevelArchitecture.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 #pragma warning restore 612, 618
         }

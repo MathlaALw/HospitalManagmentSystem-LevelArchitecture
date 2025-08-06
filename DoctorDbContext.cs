@@ -17,6 +17,7 @@ namespace HospitalManagmentSystem_LevelArchitecture
 
         public DbSet<Doctor> Doctors { get; set; }
 
+   
 
     }
 }
