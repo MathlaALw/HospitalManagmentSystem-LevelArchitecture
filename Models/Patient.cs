@@ -10,13 +10,13 @@ namespace HospitalManagmentSystem_LevelArchitecture.Models
     public class Patient
     {
         [Key]
-        public int Id { get; set; }
+        public int PId { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
-        public string Name { get; set; }
+        public string PName { get; set; }
         [Required]
-        public int Age { get; set; }
+        public int PAge { get; set; }
        
 
     }
