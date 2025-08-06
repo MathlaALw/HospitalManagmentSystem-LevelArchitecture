@@ -10,11 +10,11 @@ namespace HospitalManagmentSystem_LevelArchitecture.Models
     public class Doctor
     {
         [Key]
-        public int DId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [RegularExpression(@"^[A-Z]+[a-zA-Z\s]*$")]
-        public string DName { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public string Specialization { get; set; }
