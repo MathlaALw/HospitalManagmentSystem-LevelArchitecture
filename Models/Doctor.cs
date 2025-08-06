@@ -22,6 +22,10 @@ namespace HospitalManagmentSystem_LevelArchitecture.Models
         [Required]
         public string ContactNumber { get; set; }
 
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
 
 
 
